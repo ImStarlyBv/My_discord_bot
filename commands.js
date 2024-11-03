@@ -19,7 +19,7 @@ function createCommandChoices() {
 
 // Simple test command
 const TEST_COMMAND = {
-  name: 'test',
+  name: 'tumalditamadre',
   description: 'Basic command',
   type: 1,
   integration_types: [0, 1],
@@ -43,7 +43,67 @@ const CHALLENGE_COMMAND = {
   integration_types: [0, 1],
   contexts: [0, 2],
 };
+const ANIMAL_COMMAND =  {
+  "name": "blep",
+  "type": 1,
+  "description": "Send a random adorable animal photo",
+  "options": [
+      {
+          "name": "animal",
+          "description": "The type of animal",
+          "type": 3,
+          "required": true,
+          "choices": [
+              {
+                  "name": "Dog",
+                  "value": "animal_dog"
+              },
+              {
+                  "name": "Cat",
+                  "value": "animal_cat"
+              },
+              {
+                  "name": "Penguin",
+                  "value": "animal_penguin"
+              }
+          ]
+      },
+      {
+          "name": "only_smol",
+          "description": "Whether to show only baby animals",
+          "type": 5,
+          "required": false
+      }
+  ]
+};
 
-const ALL_COMMANDS = [TEST_COMMAND, CHALLENGE_COMMAND];
+const PLAY_COMMAND = {
+  name: 'play',
+  description: 'Play a song in your voice channel',
+  options: [
+    {
+      type: 3,
+      name: 'song',
+      description: 'The name of the song or a URL',
+      required: true,
+    },
+  ],
+  type: 1,
+};
+
+const SKIP_COMMAND = {
+  name: 'skip',
+  description: 'Skip the current song',
+  type: 1,
+};
+
+const STOP_COMMAND = {
+  name: 'stop',
+  description: 'Stop the music and clear the queue',
+  type: 1,
+};
+
+const ALL_COMMANDS = [TEST_COMMAND, CHALLENGE_COMMAND, ANIMAL_COMMAND, PLAY_COMMAND, SKIP_COMMAND, STOP_COMMAND];
+
 
 InstallGlobalCommands(process.env.APP_ID, ALL_COMMANDS);
